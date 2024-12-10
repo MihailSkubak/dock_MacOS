@@ -110,8 +110,9 @@ class _DockState<T extends Object> extends State<Dock<T>> {
                     feedback: widget.builder(item),
                     childWhenDragging: Container(),
                     //select comment if calling class DockItem
-                    child: widget.builder(
-                        item), // DockItem<T>(item: item, builder: widget.builder),
+                    child: /*widget.builder(
+                        item),*/
+                        DockItem<T>(item: item, builder: widget.builder),
                   );
                 },
               );
@@ -123,9 +124,8 @@ class _DockState<T extends Object> extends State<Dock<T>> {
   }
 }
 
-
 //this works better for pc
-/*class DockItem<T> extends StatefulWidget {
+class DockItem<T> extends StatefulWidget {
   final T item;
   final Widget Function(T) builder;
 
@@ -142,7 +142,7 @@ class _DockItemState<T> extends State<DockItem<T>> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
-      onEnter: (_) => setState(() => scale = 1.2),
+      onEnter: (_) => setState(() => scale = 1.1),
       onExit: (_) => setState(() => scale = 1.0),
       child: Transform.scale(
         scale: scale,
@@ -150,4 +150,4 @@ class _DockItemState<T> extends State<DockItem<T>> {
       ),
     );
   }
-}*/
+}
